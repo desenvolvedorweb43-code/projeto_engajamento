@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reavance - Sistema de Campanhas de Marketing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Reavance | Sistema de Gestão de Campanhas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,39 +12,67 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-red: #E31E24;
+            --dark-red: #B71C1C;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --shadow: rgba(227, 30, 36, 0.3);
+        }
+        
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: var(--black);
             padding: 0;
             min-height: 100vh;
+            color: var(--white);
         }
         
         .top-bar {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 15px 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            padding: 20px 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--primary-red);
         }
         
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
         
         .logo-text {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--primary-red);
         }
         
         .nav-buttons {
@@ -53,171 +81,181 @@
         }
         
         .nav-btn {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 8px;
+            padding: 12px 28px;
+            border: 2px solid var(--primary-red);
+            background: transparent;
+            color: var(--white);
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
             text-decoration: none;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .nav-btn:hover {
-            background: #667eea;
-            color: white;
+            background: var(--primary-red);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px var(--shadow);
         }
         
         .nav-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #764ba2;
+            background: var(--primary-red);
+            color: var(--white);
+            box-shadow: 0 8px 25px var(--shadow);
         }
         
         .header {
             text-align: center;
-            padding: 40px 20px;
-            color: white;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
+            border-bottom: 4px solid var(--primary-red);
         }
         
         .header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
         }
         
         .header p {
-            font-size: 16px;
+            font-size: 18px;
             opacity: 0.9;
-            font-weight: 400;
+            font-weight: 500;
+            color: #cccccc;
         }
         
         .container { 
-            max-width: 900px;
-            margin: 0 auto 40px;
-            background: white;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
             padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+            border: 2px solid rgba(227, 30, 36, 0.3);
         }
         
         .info-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border-left: 6px solid #fff;
         }
         
         .info-banner-icon {
-            font-size: 32px;
+            font-size: 42px;
         }
         
         .info-banner-text h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
+            font-size: 22px;
+            margin-bottom: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .info-banner-text p {
-            font-size: 14px;
+            font-size: 15px;
             opacity: 0.95;
+            font-weight: 500;
         }
         
         h2 { 
-            border-left: 5px solid;
-            padding-left: 15px;
-            margin: 35px 0 20px 0;
-            font-size: 22px;
-            font-weight: 700;
+            border-left: 6px solid var(--primary-red);
+            padding-left: 20px;
+            margin: 40px 0 25px 0;
+            font-size: 24px;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        h2.reconhecimento {
-            color: #6c757d;
-            border-color: #6c757d;
-        }
-        
-        h2.engajamento {
-            color: #dc3545;
-            border-color: #dc3545;
-        }
-        
-        h2.seguidores {
-            color: #28a745;
-            border-color: #28a745;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
         }
         
         .section-description {
-            color: #6c757d;
+            color: #b0b0b0;
             font-size: 14px;
-            margin-bottom: 20px;
-            padding-left: 20px;
+            margin-bottom: 25px;
+            padding-left: 26px;
+            font-weight: 500;
         }
         
         label { 
             display: block;
-            margin: 20px 0 8px;
-            font-weight: 600;
-            color: #2c3e50;
+            margin: 22px 0 10px;
+            font-weight: 700;
+            color: var(--white);
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         input[type="date"], 
         input[type="number"] {
             width: 100%;
-            padding: 14px 16px;
-            margin-bottom: 15px;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
-            font-size: 15px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(227, 30, 36, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
             transition: all 0.3s ease;
             font-family: 'Inter', sans-serif;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            font-weight: 600;
         }
         
         input[type="date"]:focus,
         input[type="number"]:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            background: #f8f9ff;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px var(--shadow);
+            background: rgba(0, 0, 0, 0.7);
         }
         
-        input[type="number"] {
-            font-weight: 500;
+        input::placeholder {
+            color: #888;
         }
         
         button { 
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: var(--white);
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 18px;
-            font-weight: 700;
-            margin-top: 35px;
+            font-weight: 900;
+            margin-top: 40px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px var(--shadow);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         button:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px var(--shadow);
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
         }
         
         button:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
         
         button:disabled {
@@ -227,28 +265,32 @@
         }
         
         .success-message { 
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 25px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
             display: none;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             animation: slideIn 0.4s ease;
-            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.3);
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+            border-left: 6px solid #fff;
+            font-size: 16px;
         }
         
         .error-message {
-            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 25px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
             display: none;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(235, 51, 73, 0.3);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+            border-left: 6px solid #fff;
+            font-size: 16px;
         }
         
         @keyframes slideIn {
@@ -263,42 +305,32 @@
         }
         
         .form-group { 
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .data-section {
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border: 2px solid #e1e8ed;
+            background: rgba(227, 30, 36, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 35px;
+            border: 2px solid rgba(227, 30, 36, 0.3);
         }
         
         .campaign-card {
-            background: #fafbfc;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border-left: 6px solid #667eea;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 35px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--primary-red);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
+            border-top: 1px solid rgba(227, 30, 36, 0.2);
         }
         
         .campaign-card:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .campaign-card.reconhecimento {
-            border-left-color: #6c757d;
-        }
-        
-        .campaign-card.engajamento {
-            border-left-color: #dc3545;
-        }
-        
-        .campaign-card.seguidores {
-            border-left-color: #28a745;
+            box-shadow: 0 12px 35px rgba(227, 30, 36, 0.4);
+            transform: translateX(8px);
+            border-left-color: #fff;
         }
 
         #loadingOverlay {
@@ -308,7 +340,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 32, 39, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -316,63 +348,42 @@
         }
 
         .spinner {
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            border-top: 6px solid #667eea;
+            border: 8px solid rgba(227, 30, 36, 0.2);
+            border-top: 8px solid var(--primary-red);
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             animation: spin 1s linear infinite;
         }
         
         .loading-text {
-            color: white;
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: 600;
+            color: var(--white);
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        .stats-preview {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #e1e8ed;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: #6c757d;
-            font-weight: 600;
-        }
 
         @media (max-width: 768px) {
             .container {
                 padding: 30px 20px;
-                margin: 0 10px 20px;
+                margin: 20px 10px;
             }
             
             .top-bar {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
             }
             
             .nav-buttons {
@@ -384,17 +395,33 @@
                 font-size: 18px;
             }
             
-            .stats-preview {
-                grid-template-columns: 1fr;
+            .header h1 {
+                font-size: 28px;
             }
         }
         
         footer {
             text-align: center;
-            padding: 30px;
-            color: white;
-            opacity: 0.8;
-            font-size: 14px;
+            padding: 40px;
+            color: #888;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(227, 30, 36, 0.3);
+            margin-top: 50px;
+        }
+        
+        .version-tag {
+            display: inline-block;
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-left: 10px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -402,30 +429,32 @@
 
 <div class="top-bar">
     <div class="logo-section">
-        <div class="logo-text">REAVANCE</div>
+        <!-- SUBSTITUA A URL ABAIXO PELA URL DA SUA LOGO -->
+        <img src="https://i.imgur.com/YOUR_LOGO_HERE.png" alt="Reavance Logo" class="logo-image" onerror="this.style.display='none'">
+        <div class="logo-text">REAVANCE <span class="version-tag">PRO</span></div>
     </div>
     <div class="nav-buttons">
         <a href="#" class="nav-btn active">📝 Registro</a>
-        <a href="dashboard.html" class="nav-btn">📊 Dashboard</a>
+        <a href="dashboard.html" class="nav-btn">📊 Analytics</a>
     </div>
 </div>
 
 <div id="loadingOverlay">
     <div class="spinner"></div>
-    <div class="loading-text">Salvando dados...</div>
+    <div class="loading-text">Processando Dados...</div>
 </div>
 
 <div class="header">
     <h1>Sistema de Gestão de Campanhas</h1>
-    <p>Registre e acompanhe o desempenho das suas campanhas de marketing digital</p>
+    <p>Plataforma Empresarial de Monitoramento e Análise de Marketing Digital</p>
 </div>
 
 <div class="container">
     <div class="info-banner">
         <div class="info-banner-icon">📈</div>
         <div class="info-banner-text">
-            <h3>Registro de Campanha</h3>
-            <p>Preencha os dados da campanha para análise de performance e ROI</p>
+            <h3>Registro de Performance</h3>
+            <p>Insira os dados da campanha para análise completa de ROI, performance e otimização estratégica</p>
         </div>
     </div>
     
@@ -440,71 +469,71 @@
             </div>
         </div>
 
-        <div class="campaign-card reconhecimento">
-            <h2 class="reconhecimento">👁️ RECONHECIMENTO DE MARCA</h2>
-            <p class="section-description">Campanha focada em impressões e alcance de público</p>
+        <div class="campaign-card">
+            <h2>👁️ RECONHECIMENTO DE MARCA</h2>
+            <p class="section-description">Campanha de Brand Awareness - Impressões e alcance de público-alvo</p>
             <div class="form-group">
-                <label for="rec_valor">💰 Valor Investido (R$)</label>
+                <label for="rec_valor">💰 Investimento Total (R$)</label>
                 <input type="number" step="0.01" id="rec_valor" name="rec_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="rec_resultado">📊 Resultado (Impressões)</label>
+                <label for="rec_resultado">📊 Total de Impressões</label>
                 <input type="number" id="rec_resultado" name="rec_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
-                <label for="rec_custo">📈 CPM - Custo por Mil Impressões (R$)</label>
-                <input type="number" step="0.01" id="rec_custo" name="rec_custo" placeholder="0.00" min="0">
+                <label for="rec_custo">📈 CPM - Custo por Mil (R$)</label>
+                <input type="number" step="0.01" id="rec_custo" name="rec_custo" placeholder="0.00" min="0" readonly>
             </div>
         </div>
         
-        <div class="campaign-card engajamento">
-            <h2 class="engajamento">❤️ ENGAJAMENTO</h2>
-            <p class="section-description">Campanha focada em interação e visualizações de vídeo</p>
+        <div class="campaign-card">
+            <h2>❤️ ENGAJAMENTO DIGITAL</h2>
+            <p class="section-description">Campanha de Interação - Visualizações de vídeo e conteúdo</p>
             <div class="form-group">
-                <label for="eng_valor">💰 Valor Investido (R$)</label>
+                <label for="eng_valor">💰 Investimento Total (R$)</label>
                 <input type="number" step="0.01" id="eng_valor" name="eng_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="eng_resultado">🎥 Resultado (Visualizações de Vídeo)</label>
+                <label for="eng_resultado">🎥 Visualizações de Vídeo</label>
                 <input type="number" id="eng_resultado" name="eng_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
                 <label for="eng_custo">📈 Custo por Visualização (R$)</label>
-                <input type="number" step="0.01" id="eng_custo" name="eng_custo" placeholder="0.00" min="0">
+                <input type="number" step="0.01" id="eng_custo" name="eng_custo" placeholder="0.00" min="0" readonly>
             </div>
         </div>
 
-        <div class="campaign-card seguidores">
-            <h2 class="seguidores">👥 CRESCIMENTO DE SEGUIDORES</h2>
-            <p class="section-description">Campanha focada em aquisição de seguidores e visitas ao perfil</p>
+        <div class="campaign-card">
+            <h2>👥 AQUISIÇÃO DE SEGUIDORES</h2>
+            <p class="section-description">Campanha de Crescimento - Novos seguidores e visitas ao perfil</p>
             <div class="form-group">
-                <label for="seg_valor">💰 Valor Investido (R$)</label>
+                <label for="seg_valor">💰 Investimento Total (R$)</label>
                 <input type="number" step="0.01" id="seg_valor" name="seg_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="seg_resultado">👤 Resultado (Seguidores/Visitas ao Perfil)</label>
+                <label for="seg_resultado">👤 Novos Seguidores/Visitas</label>
                 <input type="number" id="seg_resultado" name="seg_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
-                <label for="seg_custo">📈 Custo por Seguidor/Visita (R$)</label>
-                <input type="number" step="0.01" id="seg_custo" name="seg_custo" placeholder="0.00" min="0">
+                <label for="seg_custo">📈 Custo por Aquisição (R$)</label>
+                <input type="number" step="0.01" id="seg_custo" name="seg_custo" placeholder="0.00" min="0" readonly>
             </div>
         </div>
 
-        <button type="submit" id="submitBtn">✅ SALVAR DADOS DA CAMPANHA</button>
+        <button type="submit" id="submitBtn">✅ SALVAR E PROCESSAR DADOS</button>
     </form>
     
     <div id="successMessage" class="success-message">
-        ✅ Dados salvos com sucesso! Acesse o Dashboard para ver as análises.
+        ✅ DADOS SALVOS COM SUCESSO! Acesse o Dashboard Analytics para visualizar relatórios completos.
     </div>
     
     <div id="errorMessage" class="error-message">
-        ❌ Erro ao salvar. Verifique os dados e tente novamente.
+        ❌ ERRO NO PROCESSAMENTO. Verifique os dados e tente novamente.
     </div>
 </div>
 
 <footer>
-    © 2025 Reavance - Sistema de Gestão de Marketing Digital | Todos os direitos reservados
+    © 2025 Reavance | Sistema Empresarial de Gestão de Marketing Digital | Versão 3.0 Pro
 </footer>
 
 <script>
@@ -532,6 +561,8 @@
         if (impressoes > 0) {
             const cpm = (valor / impressoes) * 1000;
             document.getElementById('rec_custo').value = cpm.toFixed(2);
+        } else {
+            document.getElementById('rec_custo').value = '';
         }
     }
     
@@ -545,6 +576,8 @@
         if (views > 0) {
             const custo = valor / views;
             document.getElementById('eng_custo').value = custo.toFixed(2);
+        } else {
+            document.getElementById('eng_custo').value = '';
         }
     }
     
@@ -558,33 +591,35 @@
         if (seguidores > 0) {
             const custo = valor / seguidores;
             document.getElementById('seg_custo').value = custo.toFixed(2);
+        } else {
+            document.getElementById('seg_custo').value = '';
         }
     }
     
     form.addEventListener('submit', function(e) {
         formSubmitted = true;
         loadingOverlay.style.display = 'flex';
-        submitBtn.textContent = '⏳ SALVANDO...';
+        submitBtn.textContent = '⏳ PROCESSANDO...';
         submitBtn.disabled = true;
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
-        console.log('Formulário enviado!');
+        console.log('📊 Dados enviados para processamento');
     });
     
     function handleResponse() {
         if (!formSubmitted) return;
-        console.log('Resposta recebida');
+        console.log('✅ Resposta recebida do servidor');
         loadingOverlay.style.display = 'none';
         successMessage.style.display = 'block';
         form.reset();
         document.getElementById('data').valueAsDate = new Date();
-        submitBtn.textContent = '✅ SALVAR DADOS DA CAMPANHA';
+        submitBtn.textContent = '✅ SALVAR E PROCESSAR DADOS';
         submitBtn.disabled = false;
         formSubmitted = false;
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         setTimeout(() => {
             successMessage.style.display = 'none';
-        }, 5000);
+        }, 6000);
     }
     
     let timeoutId;
@@ -593,9 +628,9 @@
         timeoutId = setTimeout(function() {
             if (loadingOverlay.style.display === 'flex') {
                 loadingOverlay.style.display = 'none';
-                errorMessage.textContent = '❌ Tempo esgotado. Verifique sua conexão.';
+                errorMessage.textContent = '❌ TIMEOUT: Verifique sua conexão de internet e tente novamente.';
                 errorMessage.style.display = 'block';
-                submitBtn.textContent = '✅ SALVAR DADOS DA CAMPANHA';
+                submitBtn.textContent = '✅ SALVAR E PROCESSAR DADOS';
                 submitBtn.disabled = false;
                 formSubmitted = false;
             }
@@ -605,4 +640,3 @@
 
 </body>
 </html>
-
