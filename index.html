@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reavance - Registro de Campanhas</title>
+    <title>Reavance - Sistema de Campanhas de Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,111 +13,211 @@
         }
         
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 0;
             min-height: 100vh;
+        }
+        
+        .top-bar {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #764ba2;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 40px 20px;
+            color: white;
         }
         
         .header h1 {
-            color: #333;
-            font-size: 24px;
-            margin-top: 10px;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 400;
         }
         
         .container { 
-            max-width: 700px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .info-banner-icon {
+            font-size: 32px;
+        }
+        
+        .info-banner-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .info-banner-text p {
+            font-size: 14px;
+            opacity: 0.95;
         }
         
         h2 { 
-            border-bottom: 3px solid #ddd;
-            padding-bottom: 12px;
-            margin: 30px 0 20px 0;
-            font-size: 20px;
-            font-weight: 600;
+            border-left: 5px solid;
+            padding-left: 15px;
+            margin: 35px 0 20px 0;
+            font-size: 22px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         h2.reconhecimento {
-            color: #666666;
-            border-bottom-color: #666666;
+            color: #6c757d;
+            border-color: #6c757d;
         }
         
         h2.engajamento {
-            color: #FF0000;
-            border-bottom-color: #FF0000;
+            color: #dc3545;
+            border-color: #dc3545;
         }
         
         h2.seguidores {
-            color: #2F6D38;
-            border-bottom-color: #2F6D38;
+            color: #28a745;
+            border-color: #28a745;
+        }
+        
+        .section-description {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding-left: 20px;
         }
         
         label { 
             display: block;
-            margin: 15px 0 8px;
+            margin: 20px 0 8px;
             font-weight: 600;
-            color: #444;
+            color: #2c3e50;
             font-size: 14px;
         }
         
         input[type="date"], 
-        input[type="number"],
-        input[type="text"] {
+        input[type="number"] {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 16px;
             margin-bottom: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
             font-size: 15px;
             transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
         
         input[type="date"]:focus,
-        input[type="number"]:focus,
-        input[type="text"]:focus {
+        input[type="number"]:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            background: #f8f9ff;
+        }
+        
+        input[type="number"] {
+            font-weight: 500;
         }
         
         button { 
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 18px;
-            font-weight: 600;
-            margin-top: 30px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 700;
+            margin-top: 35px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            letter-spacing: 0.5px;
         }
         
         button:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
         }
         
         button:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
         }
         
         button:disabled {
@@ -128,30 +229,32 @@
         .success-message { 
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
             display: none;
             font-weight: 600;
             text-align: center;
-            animation: slideIn 0.3s ease;
+            animation: slideIn 0.4s ease;
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.3);
         }
         
         .error-message {
             background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
             display: none;
             font-weight: 600;
             text-align: center;
+            box-shadow: 0 8px 20px rgba(235, 51, 73, 0.3);
         }
         
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
@@ -164,31 +267,38 @@
         }
         
         .data-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 2px solid #e1e8ed;
         }
         
         .campaign-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: #fafbfc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .campaign-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
         
         .campaign-card.reconhecimento {
-            border-left-color: #666666;
+            border-left-color: #6c757d;
         }
         
         .campaign-card.engajamento {
-            border-left-color: #FF0000;
+            border-left-color: #dc3545;
         }
         
         .campaign-card.seguidores {
-            border-left-color: #2F6D38;
+            border-left-color: #28a745;
         }
 
         #loadingOverlay {
@@ -198,125 +308,208 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(15, 32, 39, 0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .spinner {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #667eea;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            border-top: 6px solid #667eea;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             animation: spin 1s linear infinite;
+        }
+        
+        .loading-text {
+            color: white;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .stats-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e1e8ed;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+        }
 
         @media (max-width: 768px) {
             .container {
-                padding: 25px;
+                padding: 30px 20px;
+                margin: 0 10px 20px;
+            }
+            
+            .top-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
             }
             
             h2 {
                 font-size: 18px;
             }
+            
+            .stats-preview {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="logo-section">
+        <div class="logo-text">REAVANCE</div>
+    </div>
+    <div class="nav-buttons">
+        <a href="#" class="nav-btn active">📝 Registro</a>
+        <a href="dashboard.html" class="nav-btn">📊 Dashboard</a>
+    </div>
+</div>
+
 <div id="loadingOverlay">
     <div class="spinner"></div>
+    <div class="loading-text">Salvando dados...</div>
 </div>
 
 <div class="header">
-    <h1>📊 REAVANCE - Sistema de Registro de Campanhas</h1>
+    <h1>Sistema de Gestão de Campanhas</h1>
+    <p>Registre e acompanhe o desempenho das suas campanhas de marketing digital</p>
 </div>
 
 <div class="container">
-    <!-- FORMULÁRIO OCULTO PARA IFRAME -->
+    <div class="info-banner">
+        <div class="info-banner-icon">📈</div>
+        <div class="info-banner-text">
+            <h3>Registro de Campanha</h3>
+            <p>Preencha os dados da campanha para análise de performance e ROI</p>
+        </div>
+    </div>
+    
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleResponse()"></iframe>
     
     <form id="campaignForm" method="POST" target="hidden_iframe">
         
         <div class="data-section">
             <div class="form-group">
-                <label for="data">📅 Data do Registro:</label>
+                <label for="data">📅 Data do Registro *</label>
                 <input type="date" id="data" name="data" required>
             </div>
         </div>
 
         <div class="campaign-card reconhecimento">
-            <h2 class="reconhecimento">👁️ RECONHECIMENTO</h2>
+            <h2 class="reconhecimento">👁️ RECONHECIMENTO DE MARCA</h2>
+            <p class="section-description">Campanha focada em impressões e alcance de público</p>
             <div class="form-group">
-                <label for="rec_valor">💰 Valor usado (R$):</label>
-                <input type="text" id="rec_valor" name="rec_valor" placeholder="0.00">
+                <label for="rec_valor">💰 Valor Investido (R$)</label>
+                <input type="number" step="0.01" id="rec_valor" name="rec_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="rec_resultado">📊 Resultado (Impressões):</label>
-                <input type="text" id="rec_resultado" name="rec_resultado" placeholder="0">
+                <label for="rec_resultado">📊 Resultado (Impressões)</label>
+                <input type="number" id="rec_resultado" name="rec_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
-                <label for="rec_custo">📈 Custo/resultado - CPM (R$):</label>
-                <input type="text" id="rec_custo" name="rec_custo" placeholder="0.00">
+                <label for="rec_custo">📈 CPM - Custo por Mil Impressões (R$)</label>
+                <input type="number" step="0.01" id="rec_custo" name="rec_custo" placeholder="0.00" min="0">
             </div>
         </div>
         
         <div class="campaign-card engajamento">
             <h2 class="engajamento">❤️ ENGAJAMENTO</h2>
+            <p class="section-description">Campanha focada em interação e visualizações de vídeo</p>
             <div class="form-group">
-                <label for="eng_valor">💰 Valor usado (R$):</label>
-                <input type="text" id="eng_valor" name="eng_valor" placeholder="0.00">
+                <label for="eng_valor">💰 Valor Investido (R$)</label>
+                <input type="number" step="0.01" id="eng_valor" name="eng_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="eng_resultado">🎥 Resultado (Video Views):</label>
-                <input type="text" id="eng_resultado" name="eng_resultado" placeholder="0">
+                <label for="eng_resultado">🎥 Resultado (Visualizações de Vídeo)</label>
+                <input type="number" id="eng_resultado" name="eng_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
-                <label for="eng_custo">📈 Custo por resultado (R$):</label>
-                <input type="text" id="eng_custo" name="eng_custo" placeholder="0.00">
+                <label for="eng_custo">📈 Custo por Visualização (R$)</label>
+                <input type="number" step="0.01" id="eng_custo" name="eng_custo" placeholder="0.00" min="0">
             </div>
         </div>
 
         <div class="campaign-card seguidores">
-            <h2 class="seguidores">👥 SEGUIDORES / VISITAS AO PERFIL</h2>
+            <h2 class="seguidores">👥 CRESCIMENTO DE SEGUIDORES</h2>
+            <p class="section-description">Campanha focada em aquisição de seguidores e visitas ao perfil</p>
             <div class="form-group">
-                <label for="seg_valor">💰 Valor usado (R$):</label>
-                <input type="text" id="seg_valor" name="seg_valor" placeholder="0.00">
+                <label for="seg_valor">💰 Valor Investido (R$)</label>
+                <input type="number" step="0.01" id="seg_valor" name="seg_valor" placeholder="0.00" min="0">
             </div>
             <div class="form-group">
-                <label for="seg_resultado">👤 Resultado (Seguidores/Visitas):</label>
-                <input type="text" id="seg_resultado" name="seg_resultado" placeholder="0">
+                <label for="seg_resultado">👤 Resultado (Seguidores/Visitas ao Perfil)</label>
+                <input type="number" id="seg_resultado" name="seg_resultado" placeholder="0" min="0">
             </div>
             <div class="form-group">
-                <label for="seg_custo">📈 Custo por resultado (R$):</label>
-                <input type="text" id="seg_custo" name="seg_custo" placeholder="0.00">
+                <label for="seg_custo">📈 Custo por Seguidor/Visita (R$)</label>
+                <input type="number" step="0.01" id="seg_custo" name="seg_custo" placeholder="0.00" min="0">
             </div>
         </div>
 
-        <button type="submit" id="submitBtn">✅ Salvar Dados na Planilha</button>
+        <button type="submit" id="submitBtn">✅ SALVAR DADOS DA CAMPANHA</button>
     </form>
     
     <div id="successMessage" class="success-message">
-        ✅ Dados salvos com sucesso na Planilha Google!
+        ✅ Dados salvos com sucesso! Acesse o Dashboard para ver as análises.
     </div>
     
     <div id="errorMessage" class="error-message">
-        ❌ Erro ao salvar. Tente novamente.
+        ❌ Erro ao salvar. Verifique os dados e tente novamente.
     </div>
 </div>
 
+<footer>
+    © 2025 Reavance - Sistema de Gestão de Marketing Digital | Todos os direitos reservados
+</footer>
+
 <script>
-    // IMPORTANTE: COLOQUE SUA URL DO GOOGLE APPS SCRIPT AQUI
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPHLHa1v_B7zB5KhOp_gQVW5uJoYaBT737xJMhoLMAQZsh3ODu4db7UNnDkKa_5oE2/exec';
     
-    // Definir data de hoje como padrão
     document.getElementById('data').valueAsDate = new Date();
     
     const form = document.getElementById('campaignForm');
@@ -325,72 +518,84 @@
     const submitBtn = document.getElementById('submitBtn');
     const loadingOverlay = document.getElementById('loadingOverlay');
     
-    // Atualizar action do formulário
     form.action = SCRIPT_URL;
     
-    // Variável para controlar se o formulário foi enviado
     let formSubmitted = false;
     
+    // Calcular CPM automaticamente
+    document.getElementById('rec_valor').addEventListener('input', calcularCPM);
+    document.getElementById('rec_resultado').addEventListener('input', calcularCPM);
+    
+    function calcularCPM() {
+        const valor = parseFloat(document.getElementById('rec_valor').value) || 0;
+        const impressoes = parseFloat(document.getElementById('rec_resultado').value) || 0;
+        if (impressoes > 0) {
+            const cpm = (valor / impressoes) * 1000;
+            document.getElementById('rec_custo').value = cpm.toFixed(2);
+        }
+    }
+    
+    // Calcular custo por view
+    document.getElementById('eng_valor').addEventListener('input', calcularCustoView);
+    document.getElementById('eng_resultado').addEventListener('input', calcularCustoView);
+    
+    function calcularCustoView() {
+        const valor = parseFloat(document.getElementById('eng_valor').value) || 0;
+        const views = parseFloat(document.getElementById('eng_resultado').value) || 0;
+        if (views > 0) {
+            const custo = valor / views;
+            document.getElementById('eng_custo').value = custo.toFixed(2);
+        }
+    }
+    
+    // Calcular custo por seguidor
+    document.getElementById('seg_valor').addEventListener('input', calcularCustoSeguidor);
+    document.getElementById('seg_resultado').addEventListener('input', calcularCustoSeguidor);
+    
+    function calcularCustoSeguidor() {
+        const valor = parseFloat(document.getElementById('seg_valor').value) || 0;
+        const seguidores = parseFloat(document.getElementById('seg_resultado').value) || 0;
+        if (seguidores > 0) {
+            const custo = valor / seguidores;
+            document.getElementById('seg_custo').value = custo.toFixed(2);
+        }
+    }
+    
     form.addEventListener('submit', function(e) {
-        // Marcar que o formulário foi enviado
         formSubmitted = true;
-        
-        // Mostrar loading
         loadingOverlay.style.display = 'flex';
-        
-        // Desabilita botão
-        submitBtn.textContent = '⏳ Salvando...';
+        submitBtn.textContent = '⏳ SALVANDO...';
         submitBtn.disabled = true;
-        
-        // Esconde mensagens
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
-        
         console.log('Formulário enviado!');
     });
     
     function handleResponse() {
-        // Só processar se o formulário foi enviado
         if (!formSubmitted) return;
-        
-        console.log('Resposta recebida do iframe');
-        
-        // Esconder loading
+        console.log('Resposta recebida');
         loadingOverlay.style.display = 'none';
-        
-        // Mostrar mensagem de sucesso
         successMessage.style.display = 'block';
-        
-        // Limpar formulário
         form.reset();
         document.getElementById('data').valueAsDate = new Date();
-        
-        // Reabilitar botão
-        submitBtn.textContent = '✅ Salvar Dados na Planilha';
+        submitBtn.textContent = '✅ SALVAR DADOS DA CAMPANHA';
         submitBtn.disabled = false;
-        
-        // Resetar flag
         formSubmitted = false;
-        
-        // Scroll para mensagem
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-        // Esconder mensagem após 5 segundos
         setTimeout(() => {
             successMessage.style.display = 'none';
         }, 5000);
     }
     
-    // Timeout de segurança (15 segundos)
     let timeoutId;
     form.addEventListener('submit', function() {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(function() {
             if (loadingOverlay.style.display === 'flex') {
                 loadingOverlay.style.display = 'none';
-                errorMessage.textContent = '❌ Tempo esgotado. Verifique sua conexão e tente novamente.';
+                errorMessage.textContent = '❌ Tempo esgotado. Verifique sua conexão.';
                 errorMessage.style.display = 'block';
-                submitBtn.textContent = '✅ Salvar Dados na Planilha';
+                submitBtn.textContent = '✅ SALVAR DADOS DA CAMPANHA';
                 submitBtn.disabled = false;
                 formSubmitted = false;
             }
@@ -400,4 +605,3 @@
 
 </body>
 </html>
-
